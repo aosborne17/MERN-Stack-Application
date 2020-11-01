@@ -1,69 +1,47 @@
+# MERN Stack Application
+
+
+This Application will be using React, Node, Express and MongoDB to create a FullStack Application which is dynamic and will hold persistent data
+
+### Cloning the Repository
 
 ```
-npm init
-
-npm install express
-npm install body-parser
-npm install concurrently
-npm install mongoose
+git clone https://github.com/aosborne17/MERN-Stack-Application.git
 ```
 
+### Running the Application
+
+- These run commands have been specified in the package.json file
+- Using packages such as concurrency allows us to run both the backend and frontend simultaneoulsy
+
+#### Running the Client seperately
 ```
-npm run server
-```
-
-```
-cd client
-npm install -g create-react-app
-create-react-app .
-```
-
-add proxy value in our package.json when creating full stack applications, which allows us to shorten our URLs in our routes
-
-Instead of localhost:3000/api/items, we can just do /api/items
-
-In our client package.json, add:
-"proxy": "http://localhost:5000"
-
-
-We also want to run the frontend and backend at the same time, for that we can use concurrently, which we downloaded with npm
-
-In our client package.json we can add the following scripts
-
-```
-"server": "nodemon server.js",  
-    "client": "npm start --prefix client",
-    "dev": "concurrently \"npm run server\" \"npm run client \"" # Runs both our client and server together
+npm run client
 ```
 
-## React Strap
-
+#### Running both the client and server
 ```
-npm i bootstrap reactstrap uuid react-transition-group
+npm run dev
 ```
 
-## Creating Components Folder for React App
+#### Further Iterations
 
-
-
-## Conditional Rendering
-
-- If we are fetching data from an API call, then it may take a few seconds for the data to reach
-
-- Using conditional rendering allows us to display a message on the screen, e.g. Loading... until the data has been successfully fetched
-
-#### Ternary Operators
-
-
-
-#### Using the && operator as opposed to ternary operators
-
-
+- Containerise the Application using Docker
+- Use Docker-compose to create three containers that work in silos and can interact through api calls
+- Put the application through a GitLab pipeline and host publically
 
 
 #### Project Blockers
 
+- Initially the client folder wasn't pushing to github and had a white arrow going through it
+- This was due to a .git folder being created when you use create-react-app
 
+- This was solved by going into the client folder and removing the .git
+
+```
+rm -rf .git
+```
+- Then remove all cache of that folder:
 ```
 git rm --cached client
 ```
