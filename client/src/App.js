@@ -117,7 +117,7 @@ class App extends Component {
       loadingText = this.state.character.name
     }
     return (
-      <div>
+      <div> 
         <h1>{loadingText}</h1>
         {/* {this.state.character.name} */}
       </div>
@@ -127,16 +127,3 @@ class App extends Component {
 
 export default App
 
-
-
-//     let paragraphText
-//     if (this.state.isLoggedIn === false) {
-//       paragraphText = "Logged Out"
-//     } else {
-//       paragraphText = "Logged In"
-//     }
-//     return (
-//       <div>
-//         <h1>{paragraphText}</h1>
-//         <button onClick = {this.handleClick}>{wordDisplay}</button>
-//       </div>
