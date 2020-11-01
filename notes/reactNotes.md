@@ -44,19 +44,24 @@ fetch('https://reqres.in/api/users')
 ```
 
 
+- As we mentioned above we can pass in further paramteters into fetch, here we want to POST data to the server and thus we can add in some options
+
 ```Javascript
 fetch('https://reqres.in/api/users', {
-    // we need to turn the object into a JSON so we can send it in the POST request, otherwise it won't work properly
+   
     method: 'POST',
     headers: {
         'Content-Type': 'application/json'
     },
+     // we need to turn the object into a JSON so we can send it in the POST request, otherwise it won't work properly
     body: JSON.stringify {
         name: "User1"
     }
+  // After we post the data, we are asking to return it in JSON format
 }).then(res => {
     return res.json()
   })
+  // Then we can print the data onto the console and see the object that we have added
   .then(data => console.log(data))
 ```
 

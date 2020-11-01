@@ -2,43 +2,6 @@ import React, { Component } from 'react';
 import 'bootstrap/dist/css/bootstrap.min.css';
 import './App.css';
 
-// function App() {
-//   return (
-//     <div className="App">
-//       <h1>
-//         Hello
-//       </h1>
-//     </div>
-//   );
-// }
-
-// export default App;
-
-
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       isLoggedIn: true
-//     } 
-//   }
-//   render() {
-//     let wordDisplay
-//     if (this.state.isLoggedIn === true) {
-//       wordDisplay = "in"
-//     }else {
-//       wordDisplay = "out"
-//     }
-//     return (
-//       <div>
-//         <h1>You are currently logged {wordDisplay}</h1>
-//         <button onMouseOver={() => console.log("Hovered")}>
-//           Hover over me
-//         </button>
-//       </div>
-//     )
-//   }
-// }
 
 // class App extends Component {
 //   constructor() {
@@ -73,44 +36,90 @@ import './App.css';
 // export default App 
 
 
+// class App extends Component {
+//   constructor() {
+//     super();
+//     this.state = {
+//       isLoggedIn: false
+//     }
+//     // binding the function to the class
+//     this.handleClick = this.handleClick.bind(this)
+//   }
+//   handleClick() {
+//     // making sure the event handler is working
+//     console.log("so far so good")
+//     // Use setState whenever we want to change the state
+//     this.setState(prevState => {
+//       return {
+//         // getting the opposite of whatever the state used to be
+//         isLoggedIn: !prevState.isLoggedIn
+//       }
+//     })
+//   }
+  
+//   render() {
+//     let wordDisplay
+//     if (this.state.isLoggedIn === false) {
+//       wordDisplay = "Log In"
+//     } else {
+//       wordDisplay = "Log Out"
+//     }
+//     let paragraphText
+//     if (this.state.isLoggedIn === false) {
+//       paragraphText = "Logged Out"
+//     } else {
+//       paragraphText = "Logged In"
+//     }
+//     return (
+//       <div>
+//         <h1>{paragraphText}</h1>
+//         <button onClick = {this.handleClick}>{wordDisplay}</button>
+//       </div>
+//     )
+//   }
+// }
+
+// export default App
+
+
+
 class App extends Component {
   constructor() {
-    super();
+    super()
     this.state = {
-      isLoggedIn: false
+      loading: false,
+      character: {}
     }
-    // binding the function to the class
-    this.handleClick = this.handleClick.bind(this)
-  }
-  handleClick() {
-    // making sure the event handler is working
-    console.log("so far so good")
-    // Use setState whenever we want to change the state
-    this.setState(prevState => {
-      return {
-        // getting the opposite of whatever the state used to be
-        isLoggedIn: !prevState.isLoggedIn
-      }
-    })
   }
   
+  // this is a keyword function that will run whatever is in the code block whenever this component is mounted onto the div
+  componentDidMount() {
+    // this means that as our component mount code block begins to run (so before we have received that api data) the state is will be loading, so we will set it to such
+    this.setState({loading:true})
+    fetch("https://swapi.dev/api/people/1")
+      .then(response => response.json())
+      // .then(data => console.log(data))
+      .then(data => {
+        // Here we are passing the data that comes in from the API and setting it to the character state
+        // this data is an object, meanining we can reference certain values using dot notation, e.g. character.name would = Luke Skywalker
+        this.setState({
+          // Setting the state of loading back to false as the data from the api would have loaded by this point
+          loading: false,
+          character: data
+        })
+      })
+  }
   render() {
-    let wordDisplay
-    if (this.state.isLoggedIn === false) {
-      wordDisplay = "Log In"
+    let loadingText
+    if (this.state.loading === true) {
+      loadingText = "Loading..."
     } else {
-      wordDisplay = "Log Out"
-    }
-    let paragraphText
-    if (this.state.isLoggedIn === false) {
-      paragraphText = "Logged Out"
-    } else {
-      paragraphText = "Logged In"
+      loadingText = this.state.character.name
     }
     return (
       <div>
-        <h1>{paragraphText}</h1>
-        <button onClick = {this.handleClick}>{wordDisplay}</button>
+        <h1>{loadingText}</h1>
+        {/* {this.state.character.name} */}
       </div>
     )
   }
@@ -118,12 +127,16 @@ class App extends Component {
 
 export default App
 
-// class App extends Component {
-//   constructor() {
-//     super();
-//     this.state = {
-//       isLoggedIn: true
-//     } 
-//   }
 
-// gffg
+
+//     let paragraphText
+//     if (this.state.isLoggedIn === false) {
+//       paragraphText = "Logged Out"
+//     } else {
+//       paragraphText = "Logged In"
+//     }
+//     return (
+//       <div>
+//         <h1>{paragraphText}</h1>
+//         <button onClick = {this.handleClick}>{wordDisplay}</button>
+//       </div>
