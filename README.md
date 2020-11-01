@@ -58,3 +58,12 @@ npm i bootstrap reactstrap uuid react-transition-group
 
 #### Using the && operator as opposed to ternary operators
 
+
+
+
+#### Project Blockers
+
+
+```
+git rm --cached client
+```
