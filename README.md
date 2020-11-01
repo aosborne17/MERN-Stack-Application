@@ -1,5 +1,8 @@
 # MERN Stack Application
 
+This Application will be using React, Node, Express and MongoDB to create a FullStack Application which is dynamic and will hold persistent data
+
+In depth notes into different parts of the project can be found under the Notes [Folder](notes)
 
 ## Prerequisities
 
@@ -7,7 +10,7 @@
 - Nodejs [HERE](https://nodejs.org/en/download/)
 - A Free Tier MongoDB Cluster [HERE](https://mlab.com/)
 
-This Application will be using React, Node, Express and MongoDB to create a FullStack Application which is dynamic and will hold persistent data
+
 
 ### Cloning the Repository
 
