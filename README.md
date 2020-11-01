@@ -1,12 +1,39 @@
 # MERN Stack Application
 
 
+## Prerequisities
+
+- Git [HERE](https://git-scm.com/downloads)
+- Nodejs [HERE](https://nodejs.org/en/download/)
+- A Free Tier MongoDB Cluster [HERE](https://mlab.com/)
+
 This Application will be using React, Node, Express and MongoDB to create a FullStack Application which is dynamic and will hold persistent data
 
 ### Cloning the Repository
 
 ```
 git clone https://github.com/aosborne17/MERN-Stack-Application.git
+```
+
+
+### Adding your own MongoDB Server
+
+- In order for the Application to work and your data to persist, you must create a Database in which this data can be held
+- In this case, we have used a No relational DB, Mongo
+
+- Create a config folder and within this create a keys.js file
+
+```
+mkdir config
+cd config
+touch keys.js
+```
+- Within here add in the MongoURI given when you make your cluster, click [HERE](https://mlab.com/) to make your own
+
+```javascript
+module.exports = {
+    mongoURI: //YOUR MONGOURI
+}
 ```
 
 ### Running the Application
